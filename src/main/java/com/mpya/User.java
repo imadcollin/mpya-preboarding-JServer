@@ -1,21 +1,29 @@
 package com.mpya;
 
-import java.util.ArrayList;
+import lombok.Data;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import java.util.ArrayList;
+import javax.persistence.Entity;
+import lombok.Data;
+
+@Data
+@Entity
 public class User {
 
-    private String id;
+    private @Id
+    @GeneratedValue  Long id;
     private String name;
     private ArrayList<Item> userItems;
 
-    public User(String id, String name, ArrayList<Item> userItems) {
-        this.id = id;
+    public User( String name, ArrayList<Item> userItems) {
         this.name = name;
         this.userItems = userItems;
     }
 
-    public String getId() {
-        return id;
+    public User() {
+
     }
 
     public String getName() {
@@ -24,10 +32,6 @@ public class User {
 
     public ArrayList<Item> getUserItems() {
         return userItems;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public void setName(String name) {
