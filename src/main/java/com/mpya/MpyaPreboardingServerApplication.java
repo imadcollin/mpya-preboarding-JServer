@@ -8,7 +8,6 @@ public class MpyaPreboardingServerApplication {
 
     public static void main(String[] args) {
 
-        System.out.print("test everything is OK!");
         SpringApplication.run(MpyaPreboardingServerApplication.class, args);
     }
 
