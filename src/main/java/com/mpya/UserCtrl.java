@@ -1,3 +1,4 @@
+
 package com.mpya;
 
 import org.springframework.web.bind.annotation.*;
@@ -35,12 +36,11 @@ public class UserCtrl {
 
         return repository.findById(id)
                 .map(user -> {
-                    user.setName(newUser.getName());
+                    user.setFirstName(newUser.getFirstName());
 
                     return repository.save(user);
                 })
                 .orElseGet(() -> {
-                    newUser.setId(id);
                     return repository.save(newUser);
                 });
     }
@@ -50,3 +50,4 @@ public class UserCtrl {
         repository.deleteById(id);
     }
 }
+

@@ -1,3 +1,4 @@
+
 package com.mpya;
 
 import org.slf4j.Logger;
@@ -6,18 +7,28 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.List;
+
 @Configuration
 public class DbConfig {
 
     private static final Logger log = LoggerFactory.getLogger(DbConfig.class);
 
     @Bean
-    CommandLineRunner initDatabase(UserRepo repository) {
+    CommandLineRunner initDatabase(UserRepo userRepo) {
 
-return args -> {
-    log.info("Preloading" + repository.save(new User( "Bob", null)));
-    log.info("Preloading" + repository.save(new User( "Alice", null)));
-    log.info("Preloading" + repository.save(new User( "Adam", null)));
-};
+        return args -> {
+
+            log.info("...........Preloading.........");
+            List<User> u = userRepo.findAll();
+            u.forEach(user ->
+                    System.out.println(
+                            user.getFirstName() + "-" +
+                                    user.getLastName()));
+
+            userRepo.findByFirstName("Bob").forEach(System.out::println);
+
+        };
     }
-    }
+
+}
