@@ -1,52 +1,35 @@
 package com.mpya;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import javax.persistence.Entity;
-import lombok.Data;
+import java.util.List;
 
-@Data
-@Entity
+@Getter
+@Setter
+@Document(collection = "users")
 public class User {
+    @Id
+    private String id;
+    private String firstName;
+    private String lastName;
+    private String dateOfBirth;
+    private Address address;
 
-    private @Id
-    @GeneratedValue  Long id;
-    private String name;
-    private ArrayList<Item> userItems;
+    @DBRef
+    private List<Item> items;
 
-    public User( String name, ArrayList<Item> userItems) {
-        this.name = name;
-        this.userItems = userItems;
-    }
-
-    public User() {
-
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public ArrayList<Item> getUserItems() {
-        return userItems;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setUserItems(ArrayList<Item> userItems) {
-        this.userItems = userItems;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                '}';
+    public User(String firstName, String lastName, String dateOfBirth, Address address, List<Item> items) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+        this.items = items;
     }
 
 }

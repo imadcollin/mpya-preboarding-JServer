@@ -1,42 +1,28 @@
 package com.mpya;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
 
+@Getter
+@Setter
 public class Item {
 
-    private int id;
     private String title;
-    private Date creation;
+    private String creator;
+    private String date;
 
-    public Item(int id, String title, Date creation) {
-        this.id = id;
+    public Item(String title,String creator, String date) {
         this.title = title;
-        this.creation = creation;
+        this.creator=creator;
+        this.date=date;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public Date getCreation() {
-        return creation;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setCreation(Date creation) {
-        this.creation = creation;
-    }
-
 
 }
