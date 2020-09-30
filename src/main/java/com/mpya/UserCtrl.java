@@ -25,7 +25,7 @@ public class UserCtrl {
 
 
     @GetMapping("/user/{id}")
-    User one(@PathVariable Long id) {
+    User one(@PathVariable String id) {
 
         return repository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
@@ -46,7 +46,7 @@ public class UserCtrl {
     }
 
     @DeleteMapping("/user/{id}")
-    void deleteUser(@PathVariable Long id) {
+    void deleteUser(@PathVariable String id) {
         repository.deleteById(id);
     }
 }
