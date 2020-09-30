@@ -1,13 +1,11 @@
-package com.mpya;
+package com.mpya.models;
 
+import com.mpya.Address;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Id;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -21,7 +19,7 @@ public class User {
     private String dateOfBirth;
     private Address address;
 
-    @DBRef
+    //@DBRef
     private List<Item> items;
 
     public User(String firstName, String lastName, String dateOfBirth, Address address, List<Item> items) {
