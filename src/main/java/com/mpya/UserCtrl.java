@@ -1,8 +1,8 @@
 
 package com.mpya;
 
+import com.mpya.models.User;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -19,8 +19,8 @@ public class UserCtrl {
     }
 
     @PostMapping("/user")
-    User newEmployee(@RequestBody User newEmployee) {
-        return repository.save(newEmployee);
+    User newUser(@RequestBody User newUser) {
+        return repository.save(newUser);
     }
 
 
@@ -32,7 +32,7 @@ public class UserCtrl {
     }
 
     @PutMapping("/user/{id}")
-    User replaceEmployee(@RequestBody User newUser, @PathVariable Long id) {
+    User replaceUser(@RequestBody User newUser, @PathVariable Long id) {
 
         return repository.findById(id)
                 .map(user -> {
@@ -46,7 +46,7 @@ public class UserCtrl {
     }
 
     @DeleteMapping("/user/{id}")
-    void deleteEmployee(@PathVariable Long id) {
+    void deleteUser(@PathVariable Long id) {
         repository.deleteById(id);
     }
 }
